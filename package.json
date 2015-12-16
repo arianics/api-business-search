@@ -1,0 +1,25 @@
+{
+  "name": "api-business-search",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arianics/api-business-search.git"
+  },
+  "author": "ariankhosravi <arian@arin.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arianics/api-business-search/issues"
+  },
+  "homepage": "https://github.com/arianics/api-business-search#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "yelp": "^1.0.1"
+  }
+}
