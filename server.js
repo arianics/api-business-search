@@ -17,9 +17,15 @@ router.get('/', function(req, res) {
   });
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3002");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 router.route('/yelp-search')
-.post(function(req, res) {
-  yelp.search({ term: 'food', location: 'glendale, ca' })
+.post(function(req, res, next) {
+  yelp.search(req.body)
   .then(function (data) {
     console.log(data);
     res.json(data);
