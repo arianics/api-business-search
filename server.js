@@ -1,12 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var Yelp = require('yelp');
-var yelpConfig = require('./yelp-config.js');
+var yelp = require('yelp-fusion');
+
 
 var port = process.env.PORT || 3001;
 var app = express();
 var router = express.Router();
-var yelp = new Yelp(yelpConfig);
+var yelpClient = yelp.client(process.env.API_KEY);
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -25,7 +26,7 @@ app.use(function(req, res, next) {
 
 router.route('/yelp-search')
 .post(function(req, res, next) {
-  yelp.search(req.body)
+  yelpClient.search(req.body)
   .then(function (data) {
     console.log(data);
     res.json(data);
